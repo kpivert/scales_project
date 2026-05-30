@@ -65,7 +65,7 @@ const barLabels = data.map((d, i) => (
     fill={d.count < 8 ? econBlue : "#fff"}
     textAnchor="start"
     dominantBaseline="middle"
-    fontSize={15}>
+    fontSize={14}>
     {d.name}
   </text>
 ));
@@ -78,6 +78,7 @@ function App() {
         style={{
           width: 610,
           height: 100,
+          textAlign: "left",
         }}>
         <svg width={610} height={10}>
           <line x1={0} y1={0} x2={610} y2={0} stroke="#000"></line>
@@ -97,11 +98,12 @@ function App() {
           {bars}
           {barLabels}
         </svg>
+      </div>
+      <div style={{ width: 610, height: 100, textAlign: "left" }}>
         <p className="caption">
           Sources: Laboratory-Acquired Infection Database; American Biological
           Safety Association
         </p>
-        <br></br>
         <p className="caption">The Economist</p>
       </div>
     </>
