@@ -81,7 +81,7 @@ function App() {
         }}>
         <svg width={610} height={10}>
           <line x1={0} y1={0} x2={610} y2={0} stroke="#000"></line>
-          <rect width={50} height={40} x={0} y={0} fill={econRed}></rect>
+          <rect width={39} height={10} x={0} y={0} fill={econRed}></rect>
         </svg>
         <h1>Escape artists</h1>
         <p className="headerText">
