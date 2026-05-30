@@ -1,6 +1,6 @@
 :root {
-  --text: #0f172a;
-  --text-h: #08060d;
+  --text: #0e172a;
+  --text-h: #0e172a;
   --bg: #fff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
@@ -28,4 +28,17 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.caption {
+  color: #808080;
+}
+
+.headerText {
+  color: #0e172a;
 }

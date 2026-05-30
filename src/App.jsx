@@ -24,15 +24,21 @@ const yScale = d3
   .padding(0.3);
 
 const econBlue = "#0A6FA2";
-
+const econGray = "#808080";
+const econRed = "#E5001C";
 const xLines = d3
   .range(0, 55, 5)
   .map((d) => (
-    <line x1={xScale(d)} x2={xScale(d)} y1={height} y2={0} stroke="red"></line>
+    <line
+      x1={xScale(d)}
+      x2={xScale(d)}
+      y1={height}
+      y2={0}
+      stroke="#eaeaea"></line>
   ));
 
 const xTicks = d3.range(0, 55, 5).map((d) => (
-  <text x={xScale(d)} y={30} fill="#000" textAnchor="middle" fontSize={30}>
+  <text x={xScale(d)} y={5} fill={econGray} textAnchor="middle" fontSize={10}>
     {d}
   </text>
 ));
@@ -44,53 +50,52 @@ const bars = data.map((d, i) => (
     y={yScale(d.name)}
     width={xScale(d.count)}
     height={yScale.bandwidth()}
-    fill="#0A6FA2"></rect>
+    fill={econBlue}></rect>
 ));
 
 const barLabels = data.map((d, i) => (
   <text
     x={d.count > 8 ? xScale(4) : xScale(d.count + 3)}
     y={yScale(d.name) + yScale.bandwidth() / 2}
-    // fill="#000"
     fill={d.count < 8 ? econBlue : "#fff"}
     textAnchor="start"
-    fontSize={20}>
+    fontSize={15}>
     {d.name}
   </text>
 ));
 
 function App() {
-  const exampleLine = (
-    <line x1={40} x2={40} y1={height} y2={0} stroke="#000"></line>
-  );
-
-  console.log(xLines);
+  console.log(yScale.bandwidth());
   return (
     <>
-      <div>
+      <div
+        style={{
+          width: 610,
+          height: 100,
+        }}>
+        <svg width={610} height={10}>
+          <line x1={0} y1={0} x2={610} y2={0} stroke="#000"></line>
+          <rect width={50} height={40} x={0} y={0} fill={econRed}></rect>
+        </svg>
         <h1>Escape artists</h1>
-        <p>Number of laboratory-acquired infections, 1970-2021</p>
+        <p className="headerText">
+          Number of laboratory-acquired infections, 1970-2021
+        </p>
+      </div>
+      <div>
         <svg width={width} height={height}>
-          <rect
-            x={0}
-            y={0}
-            width={width}
-            height={height}
-            fill="red"
-            fillOpacity={0.7}
-          />
-          {exampleLine}
+          <rect x={0} y={0} width={width} height={height} fill="#fff" />
           {xLines}
           {xTicks}
           {bars}
           {barLabels}
         </svg>
-        <p>
+        <p className="caption">
           Sources: Laboratory-Acquired Infection Database; American Biological
           Safety Association
         </p>
         <br></br>
-        <p>The Economist</p>
+        <p className="caption">The Economist</p>
       </div>
     </>
   );
