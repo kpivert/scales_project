@@ -21,7 +21,7 @@ const yScale = d3
   .scaleBand()
   .domain(data.map((d) => d.name))
   .range([height, 0])
-  .padding(0.3);
+  .padding(0.4);
 
 const econBlue = "#0A6FA2";
 const econGray = "#808080";
@@ -36,6 +36,10 @@ const xLines = d3
       y2={0}
       stroke="#eaeaea"></line>
   ));
+
+const zeroLine = (
+  <line x1={0} y1={0} x2={0} y2={height} stroke="#000000"></line>
+);
 
 const xTicks = d3.range(0, 55, 5).map((d) => (
   <text x={xScale(d)} y={5} fill={econGray} textAnchor="middle" fontSize={10}>
@@ -55,10 +59,12 @@ const bars = data.map((d, i) => (
 
 const barLabels = data.map((d, i) => (
   <text
-    x={d.count > 8 ? xScale(4) : xScale(d.count + 3)}
+    x={d.count > 8 ? xScale(1) : xScale(d.count + 0.5)}
     y={yScale(d.name) + yScale.bandwidth() / 2}
+    // y={yScale(d.name)}
     fill={d.count < 8 ? econBlue : "#fff"}
     textAnchor="start"
+    dominantBaseline="middle"
     fontSize={15}>
     {d.name}
   </text>
@@ -86,6 +92,7 @@ function App() {
         <svg width={width} height={height}>
           <rect x={0} y={0} width={width} height={height} fill="#fff" />
           {xLines}
+          {zeroLine}
           {xTicks}
           {bars}
           {barLabels}
