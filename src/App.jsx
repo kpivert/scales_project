@@ -80,7 +80,7 @@ function App() {
           height: 100,
           textAlign: "left",
         }}>
-        <svg width={610} height={10}>
+        <svg width={610} height={10} style={{ border: "none" }}>
           <line x1={0} y1={0} x2={610} y2={0} stroke="#000"></line>
           <rect width={39} height={10} x={0} y={0} fill={econRed}></rect>
         </svg>
@@ -90,7 +90,10 @@ function App() {
         </p>
       </div>
       <div>
-        <svg width={width} height={height} style={{ overflow: "visible" }}>
+        <svg
+          width={width}
+          height={height}
+          style={{ border: "none", overflow: "visible" }}>
           <rect x={0} y={0} width={width} height={height} fill="#fff" />
           {xLines}
           {zeroLine}
