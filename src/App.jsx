@@ -27,7 +27,7 @@ const econBlue = "#0A6FA2";
 const econGray = "#808080";
 const econRed = "#E5001C";
 const xLines = d3
-  .range(0, 55, 5)
+  .range(0, 60, 5)
   .map((d) => (
     <line
       x1={xScale(d)}
@@ -41,8 +41,8 @@ const zeroLine = (
   <line x1={0} y1={0} x2={0} y2={height} stroke="#000000"></line>
 );
 
-const xTicks = d3.range(0, 55, 5).map((d) => (
-  <text x={xScale(d)} y={5} fill={econGray} textAnchor="middle" fontSize={10}>
+const xTicks = d3.range(0, 60, 5).map((d) => (
+  <text x={xScale(d)} y={-5} fill={econGray} textAnchor="middle" fontSize={10}>
     {d}
   </text>
 ));
@@ -71,7 +71,7 @@ const barLabels = data.map((d, i) => (
 ));
 
 function App() {
-  console.log(yScale.bandwidth());
+  console.log(d3.range(0, 55, 5));
   return (
     <>
       <div
@@ -90,7 +90,7 @@ function App() {
         </p>
       </div>
       <div>
-        <svg width={width} height={height}>
+        <svg width={width} height={height} style={{ overflow: "visible" }}>
           <rect x={0} y={0} width={width} height={height} fill="#fff" />
           {xLines}
           {zeroLine}
